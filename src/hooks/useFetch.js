@@ -1,28 +1,27 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
 
 export const useFetch = () => {
+  const [state, setState] = useState({
+    data: null,
+    isLoading: true,
+    hasError: false,
+    error: null,
+  });
 
-    const [state, setState] = useState({
-        data: null,
-        isLoading: true,
-        hasError: false,
-        error: null,
-    });
+  useEffect(() => {
+    getFetch();
+  }, []);
 
-    useEffect(() => {
-        getFetch();
-    }, []);
+  const getFetch = async () => {
+    const resp = await fetch("https://pokeapi.co/api/v2/pokemon/1");
+    const data = await resp.json();
 
-    const getFetch = async() => {
-        const resp = await fetch('https://pokeapi.co/api/v2/pokemon/1');
-        const data = await resp.json();
+    console.log({ data });
+  };
 
-        console.log({data});
-    }
-
-    return {
-        data: state.data,
-        isLoading: state.isLoading,
-        hasError: state.hasError,
-    }
-}
+  return {
+    data: state.data,
+    isLoading: state.isLoading,
+    hasError: state.hasError,
+  };
+};

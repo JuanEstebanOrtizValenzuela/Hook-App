@@ -1,11 +1,8 @@
-import React from 'react';
-import { useFetch } from '../hooks';
+import React from "react";
+import { useFetch } from "../hooks";
 
 export const MultipleCustomHooks = () => {
+  useFetch();
 
-    useFetch();
-
-    return (
-        <div>MultipleCustomHooks</div>
-    )
-}
+  return <div>MultipleCustomHooks</div>;
+};
